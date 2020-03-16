@@ -28,7 +28,7 @@ before_install:
 # [END auth]
 install:
 # Set the correct project to deploy to
-- gcloud config set project inspiring-bonus-271306
+- gcloud config set project test-project-271311
 # Install the Python dependencies
 - pip install -r requirements.txt -t lib/
 script:
