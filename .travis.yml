@@ -15,6 +15,8 @@ before_install:
   fi
 - echo "key = '${API_KEY}'" > api_key.py
 - echo "${CLIENT_SECRET}" > client-secret.json
+- cat api_key.py
+- cat client-secret.json
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then
      curl https://sdk.cloud.google.com | bash;
   fi
