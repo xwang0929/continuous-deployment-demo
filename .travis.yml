@@ -1,6 +1,8 @@
 sudo: false
 language: python
 python: "2.7"
+services:
+  - docker
 
 cache:
   directories:
@@ -23,7 +25,6 @@ before_install:
 
 install:
 - gcloud config set project test-project-271311
-- pip install -r requirements.txt -t lib/
 
 script:
 - gcloud -q app deploy app.yaml --promote
