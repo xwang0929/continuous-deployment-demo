@@ -1,10 +1,11 @@
-FROM ubuntu:18.04
+FROM nginx
 
-RUN apt-get update -y
-RUN apt-get install -y python2.7 python-pip
-RUN pip install flask
+COPY nginx.conf /etc/nginx/nginx.conf
 
-ADD . /
-EXPOSE 5000
+RUN mkdir -p /var/log/app_engine
 
-ENTRYPOINT ["python", "main.py"]
+RUN mkdir -p /usr/share/nginx/www/_ah && \
+    echo "healthy" > /usr/share/nginx/www/_ah/health
+
+ADD www/ /usr/share/nginx/www/
+RUN chmod -R a+r /usr/share/nginx/www
